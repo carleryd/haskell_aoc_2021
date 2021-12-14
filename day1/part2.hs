@@ -1,5 +1,3 @@
-import System.IO
-
 count :: [Int] -> Maybe Int -> Int -> Int
 count [] _ acc = acc
 count [_] _ acc = acc
@@ -15,11 +13,8 @@ count (x1:x2:x3:xs) prevM acc =
 
 main :: IO ()
 main = do
-  handle <- openFile "input.txt" ReadMode
-  contents <- hGetContents handle
+  contents <- readFile "input.txt"
 
   let numbers = fmap read (words contents) :: [Int]
   let increases = count numbers Nothing 0
   print increases
-
-  hClose handle

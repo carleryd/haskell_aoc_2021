@@ -1,4 +1,3 @@
-import System.IO
 import Data.Maybe (catMaybes)
 
 data Movement = Forward Int | Down Int | Up Int deriving (Show)
@@ -22,10 +21,7 @@ getPosition = foldl
 
 main :: IO ()
 main = do
-  handle <- openFile "input.txt" ReadMode
-  contents <- hGetContents handle
+  contents <- readFile "input.txt"
 
   let (horizontal, depth, _) = getPosition $ catMaybes $ fmap parseMovement $ lines contents
   print $ horizontal * depth
-
-  hClose handle
