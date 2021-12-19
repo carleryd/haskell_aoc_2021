@@ -41,8 +41,6 @@ parseBinary xs =
   in
     (binToDec gamma, binToDec epsilon)
 
-
-
 main :: IO ()
 main = do
   contents <- readFile "input.txt"
